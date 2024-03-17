@@ -1,0 +1,23 @@
+//Abordagem por recursao, melhor que força bruta, complexidade O(n)
+
+function inverterString(string) {
+    let arrayC = string.split("");
+    inverterStringAuxiliar(arrayC, 0, arrayC.length - 1);
+    return arrayC.join("");
+}
+
+function inverterStringAuxiliar(arrayC, inicio, fim) {
+    if (inicio > fim) {
+        return;
+    }
+    trocar(arrayC, inicio, fim);
+    inverterStringAuxiliar(arrayC, inicio + 1, fim - 1);
+}
+
+function trocar(arrayC, inicio, fim) {
+    [arrayC[inicio], arrayC[fim]] = [arrayC[fim], arrayC[inicio]];
+}
+
+const minhaString = "Target sistemas";
+const stringInvertida = inverterString(minhaString);
+console.log(stringInvertida); 
