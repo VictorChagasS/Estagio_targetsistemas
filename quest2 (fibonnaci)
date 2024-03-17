@@ -1,0 +1,46 @@
+//Codigo de baixa complexidade, aproximadamente o(n), utilizei multiplicacao de matrizes aplicando a formula
+
+function fib(n) {
+    let f = [[1, 1], [1, 0]];
+    if (n === 0) return 0;
+    power(f, n - 1);
+    return f[0][0];
+}
+
+function isFib(number) {
+    if (number == 0) return true;
+    let a = 0;
+    let b = 1;
+    while (true) {
+        let fibNumber = fib(b);
+        if (fibNumber === number)
+            return true;
+        else if (fibNumber > number)
+            return false;
+        b++;
+    }
+}
+
+function multiply(f, m) {
+    let x = f[0][0] * m[0][0] + f[0][1] * m[1][0];
+    let y = f[0][0] * m[0][1] + f[0][1] * m[1][1];
+    let z = f[1][0] * m[0][0] + f[1][1] * m[1][0];
+    let w = f[1][0] * m[0][1] + f[1][1] * m[1][1];
+
+    f[0][0] = x;
+    f[0][1] = y;
+    f[1][0] = z;
+    f[1][1] = w;
+}
+
+function power(f, n) {
+    if (n === 0 || n === 1) return;
+    let m = [[1, 1], [1, 0]];
+    power(f, Math.floor(n / 2));
+    multiply(f, f);
+    if (n % 2 !== 0) multiply(f, m);
+}
+
+
+const num = 4;
+console.log(isFib(num));
