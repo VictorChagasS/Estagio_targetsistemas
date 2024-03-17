@@ -1,0 +1,5 @@
+const indice = 13;
+const numeros = Array.from({length: INDICE}, (_, index) => index + 1);
+const soma = numeros.reduce((acc, curr) => acc + curr, 0);
+
+console.log(SOMA);
